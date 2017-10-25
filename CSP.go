@@ -8,36 +8,36 @@ type ContentSecurityPolicy struct {
 	cache    string
 }
 
-// New ...
+// New creates a new content security policy.
 func New() *ContentSecurityPolicy {
 	return &ContentSecurityPolicy{
 		policies: make(map[string]string),
 	}
 }
 
-// Get ...
+// Get retrieves a policy by key.
 func (csp *ContentSecurityPolicy) Get(key string, value string) string {
 	return csp.policies[key]
 }
 
-// Set ...
+// Set sets a policy by key.
 func (csp *ContentSecurityPolicy) Set(key string, value string) {
 	csp.policies[key] = value
 	csp.updateCache()
 }
 
-// SetMap ...
+// SetMap overwrites all policies with the given map.
 func (csp *ContentSecurityPolicy) SetMap(m map[string]string) {
 	csp.policies = m
 	csp.updateCache()
 }
 
-// String ...
+// String returns the actual string representation of the CSP header value.
 func (csp *ContentSecurityPolicy) String() string {
 	return csp.cache
 }
 
-// updateCache ...
+// updateCache updates the internal cache.
 func (csp *ContentSecurityPolicy) updateCache() {
 	buffer := bytes.Buffer{}
 
