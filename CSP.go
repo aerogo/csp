@@ -2,16 +2,19 @@ package csp
 
 import "bytes"
 
-// ContentSecurityPolicy ...
+// Map is an alias for a map of string keys and values.
+type Map map[string]string
+
+// ContentSecurityPolicy manages the separate parts of a CSP header.
 type ContentSecurityPolicy struct {
-	policies map[string]string
+	policies Map
 	cache    string
 }
 
 // New creates a new content security policy.
 func New() *ContentSecurityPolicy {
 	return &ContentSecurityPolicy{
-		policies: make(map[string]string),
+		policies: make(Map),
 	}
 }
 
@@ -27,7 +30,7 @@ func (csp *ContentSecurityPolicy) Set(key string, value string) {
 }
 
 // SetMap overwrites all policies with the given map.
-func (csp *ContentSecurityPolicy) SetMap(m map[string]string) {
+func (csp *ContentSecurityPolicy) SetMap(m Map) {
 	csp.policies = m
 	csp.updateCache()
 }
