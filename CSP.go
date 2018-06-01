@@ -19,7 +19,7 @@ func New() *ContentSecurityPolicy {
 }
 
 // Get retrieves a policy by key.
-func (csp *ContentSecurityPolicy) Get(key string, value string) string {
+func (csp *ContentSecurityPolicy) Get(key string) string {
 	return csp.policies[key]
 }
 
