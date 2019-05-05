@@ -1,6 +1,6 @@
 package csp
 
-import "bytes"
+import "strings"
 
 // Map is an alias for a map of string keys and values.
 type Map map[string]string
@@ -42,7 +42,7 @@ func (csp *ContentSecurityPolicy) String() string {
 
 // updateCache updates the internal cache.
 func (csp *ContentSecurityPolicy) updateCache() {
-	buffer := bytes.Buffer{}
+	buffer := strings.Builder{}
 
 	for key, value := range csp.policies {
 		buffer.WriteString(key)
