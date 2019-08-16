@@ -3,14 +3,13 @@ package csp_test
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
 	"github.com/aerogo/csp"
+	"github.com/akyoto/assert"
 )
 
 func TestCSP(t *testing.T) {
 	policy := csp.New()
-	assert.Empty(t, policy.String())
+	assert.Equal(t, policy.String(), "")
 
 	// SetMap
 	policy.SetMap(csp.Map{
